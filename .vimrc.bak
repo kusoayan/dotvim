@@ -1,0 +1,286 @@
+set nocompatible "這行請儘量放在第1行
+
+" Pathogen
+filetype off
+" call pathogen#helptags()
+" call pathogen#runtime_append_all_bundles()
+"
+" set for Vundle
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+"My Bundles
+
+Bundle 'Align'
+"Bundle 'autoclose'
+Bundle 'bufexplorer'
+Bundle 'easymotion'
+Bundle 'gsession'
+Bundle 'NERD_tree'
+Bundle 'snipMate'
+Bundle 'supertab'
+Bundle 'surround'
+Bundle 'syntax'
+Bundle 'tagbar'
+Bundle 'taglist'
+Bundle 'yankring'
+Bundle 'color'
+Bundle 'vim-latex'
+Bundle 'tw-doc'
+Bundle 'Shougo/neocomplcache'
+Bundle 'Lokaltog/vim-powerline'
+
+
+
+filetype plugin indent on
+
+" Bundle end
+
+"vim內部使用的編碼                                                                                          
+set fencs=ucs-bom,utf8,big5,chinese,ansi "讀檔時, vim依序猜測的檔案編碼
+
+set fenc=utf8 "新開一個檔案時, vim預設的檔案編碼
+
+if(has("win32"))
+  set tenc=big5
+elseif(has("unix"))
+  set tenc=utf8
+  set enc=utf8
+endif
+
+lan mes zh_TW.UTF-8 "注意大小寫及hyphen
+source $VIMRUNTIME/delmenu.vim
+set langmenu=en_us.utf8
+source $VIMRUNTIME/menu.vim
+set nobomb "保留或移除 UTF-8 BOM  
+
+autocmd! bufwritepost _vimrc source % " autoload _vimrc
+
+if has("gui_running")
+    if has('win32')
+        set guifont=Consolas:h11:cANSI
+        set background=dark
+        set t_Co=256 " 256 color mode
+        set cursorline " highlight current line
+        colors ansi_blows
+    elseif has('unix') " gvim in Linux
+        set guifont=Monaco\ 14
+        set background=dark
+        set t_Co=256 " 256 color mode
+        set cursorline " highlight current line
+        "colors moria
+        colors ansi_blows
+    else " Other OS's(such as MacOS)
+        "
+    endif
+else " Console vim
+    if has('win32')
+    elseif has('unix')
+        colors ansi_blows
+    else
+    endif
+endif
+
+set display=lastline " 顯示過長行
+syntax enable " Enable syntax highlight
+set nu " Show line#
+set showmatch " Show matching bracets
+set expandtab " Basic editing options
+set shiftwidth=2
+au FileType html,python,vim,javascript setl shiftwidth=4
+au FileType html,python,vim,javascript setl tabstop=4
+au FileType java,php setl shiftwidth=4
+au FileType java,php setl tabstop=4
+set smarttab
+set lbr
+set tw=0
+set ai "Auto indent
+set si " Smart indet
+set cindent " C-style indeting
+set wrap " Wrap lines
+set history=400 " Sets how many lines of history VIM har to remember
+set autoread " Set to auto read when a file is changed from the outside
+set mouse=a " Have the mouse enabled all the time:
+set lz " Do not redraw, when running macros.. lazyredraw
+set so=7 " set 7 lines to the curors - when moving vertical..
+set cmdheight=2 " The commandbar is 2 high
+set hid " Change buffer - without saving
+" set ignorecase " Ignore case when searching
+set incsearch
+set magic " Set magic on
+set noerrorbells " No sound on errors.
+set novisualbell
+set t_vb=
+set mat=4 " How many tenths of a second to blink
+set hlsearch " Highlight search things
+set nobackup " Turn backup off
+set nowb
+set noswapfile
+set backspace=start,indent,eol " smart backspace
+set fileformats=unix,dos,mac "依載入檔案調整EOL格式，即set ffs=...                                                       
+set fileformat=unix "預設寫入檔案的EOL格式，即set ff=...
+set helplang=cn " use chinese help
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => 自動回到最後離開時的編輯位置
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("autocmd")
+   autocmd BufRead *.txt set tw=78
+   autocmd BufReadPost *
+      \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+      \   exe "normal g'\"" |
+      \ endif
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Map Ctrl
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map ,v <C-V>
+map ,w <C-W>w
+map <C-Tab> :bn<CR>
+map <F5> :!python %
+map <F6> :!javac %
+map <F7> :!java 
+
+" Hot key to switch between Big5 and UTF-8
+map <C-u> :set fileencoding=utf-8<CR>
+map <C-b> :set fileencoding=big5<CR>
+
+" NERDTree 
+map <F2> :NERDTreeToggle<CR>
+
+" set YankRing
+nnoremap <silent> <F11> :YRShow<CR>
+
+nmap <tab> v>
+nmap <s-tab> v<
+nmap <F3> :tabp<ENTER>
+nmap <F4> :tabn<ENTER>
+
+vmap <tab> >gv
+vmap <s-tab> <gv
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" taglist
+let Tlist_Auto_Highlight_Tag = 1
+let Tlist_Auto_Open = 0
+let Tlist_Auto_Update = 1
+let Tlist_Close_On_Select = 0
+let Tlist_Compact_Format = 0
+let Tlist_Display_Prototype = 0
+let Tlist_Display_Tag_Scope = 1
+let Tlist_Enable_Fold_Column = 0
+let Tlist_Exit_OnlyWindow = 0
+let Tlist_File_Fold_Auto_Close = 0
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Hightlight_Tag_On_BufEnter = 1
+let Tlist_Inc_Winwidth = 0
+
+" 狀態列設定
+"set ls=2
+"set statusline=%<%f\ %m%=\ %h%r\ %-19([%p%%]\ %3l,%02c%03V%)%y
+"highlight StatusLine term=bold,reverse cterm=bold,reverse
+
+set laststatus=2
+set statusline=%4*%<\ %1*[%F]
+set statusline+=%4*\ %5*[%{&encoding}, " encoding
+set statusline+=%{&fileformat}%{\"\".((exists(\"+bomb\")\ &&\ &bomb)?\",BOM\":\"\").\"\"}]%m
+set statusline+=%4*%=\ %6*%y%4*\ %3*%l%4*,\ %3*%c%4*\ \<\ %2*%P%4*\ \>
+highlight User1 ctermfg=red
+highlight User2 term=underline cterm=underline ctermfg=green
+highlight User3 term=underline cterm=underline ctermfg=yellow
+highlight User4 term=underline cterm=underline ctermfg=white
+highlight User5 ctermfg=cyan
+highlight User6 ctermfg=white
+
+" set GSession
+if has('win32')
+    let g:session_dir='$VIM/vimfiles/bundle/gsession/session'
+"elseif has('unix')
+    "let g:session_dir='.vim/bundle/gsession/session'
+endif
+
+" set Tagbar
+nnoremap <silent> <F9> :TagbarToggle<CR>
+
+" set Gcc
+set makeprg=gcc\ -Wall\ -o\ %<\ %
+map <F8> :make<CR>
+
+
+" set vim=latex
+
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" " search in a singe file. This will confuse Latex-Suite. Set your grep
+" " program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+
+
+" set NeoComplCache
+
+
+" set TabLine
+set guitablabel=%{ShortTabLabel()}
+function ShortTabLabel ()
+    let bufnrlist = tabpagebuflist (v:lnum)
+    let label = bufname (bufnrlist[tabpagewinnr (v:lnum) -1])
+    let filename = fnamemodify (label, ':t')
+    return filename
+endfunction
+
+set tabline=%!MyTabLine()
+function MyTabLine()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    " 選擇高亮
+    if i + 1 == tabpagenr()
+      let s .= '%#TabLineSel#'
+    else
+      let s .= '%#TabLine#'
+    endif
+    " 設置標籤頁號 (用於鼠標點擊)
+    let s .= '%' . (i + 1) . 'T'
+    " MyTabLabel() 提供完整路徑標籤 MyShortTabLabel 提供文件名標籤
+    let s .= ' %{MyShortTabLabel(' . (i + 1) . ')} '
+  endfor
+  " 最後一個標籤頁之後用 TabLineFill 填充並復位標籤頁號
+  let s .= '%#TabLineFill#%T'
+  " 右對齊用於關閉當前標籤頁的標籤
+  if tabpagenr('$') > 1
+    let s .= '%=%#TabLine#%999Xclose'
+  endif
+  return s
+endfunction
+" 文件名標籤
+function MyShortTabLabel(n)
+  let buflist = tabpagebuflist(a:n)
+  let label = bufname (buflist[tabpagewinnr (a:n) -1])
+  let filename = fnamemodify (label, ':t')
+  return filename
+endfunction
+"完整路徑標籤
+function MyTabLabel(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  return bufname(buflist[winnr - 1])
+endfunction
+" vim 標籤樣式
+"  TabLineFill  tab pages line, where there are no labels
+hi TabLineFill term=none
+hi TabLineFill ctermfg=DarkGrey
+hi TabLineFill guifg=#777777
+"  TabLineSel   tab pages line, active tab page label
+hi TabLineSel term=inverse
+hi TabLineSel cterm=none ctermfg=yellow ctermbg=Black
+hi TabLineSel gui=none guifg=yellow guibg=Black
+ 
+" Develop editing options
+au FileType vim setl expandtab
+au FileType vim setl shiftwidth=2
+au FileType vim setl tabstop=2
