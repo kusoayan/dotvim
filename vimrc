@@ -1,3 +1,4 @@
+" here to merge
 "Use Vim settings, rather then Vi settings (much better!).
 "This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -81,7 +82,7 @@ let g:mapleader = ","
 nmap <leader>ww :w!<cr>
 
 " Fast editing of the .vimrc
-map <leader>rc :e! ~/.vimrc<cr>
+map <leader>rc :tabe! ~/.vimrc<cr>
 
 " Yank to System clipboard
 map <S-c> "+y
@@ -410,6 +411,9 @@ iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Remap VIM gf
+map gf <C-w>gf
+
 "Remap VIM 0
 map 0 ^
 
