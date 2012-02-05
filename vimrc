@@ -346,8 +346,8 @@ map <leader>tm :tabmove
 map <leader>cd :cd %:p:h<cr>
 
 " 切換 tab
-nmap <F3> :tabp<ENTER>
-nmap <F4> :tabn<ENTER>
+nmap <S-H> :tabp<ENTER>
+nmap <S-L> :tabn<ENTER>
 
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
@@ -446,6 +446,13 @@ nmap <tab> v>
 nmap <s-tab> v<
 vmap <tab> >gv
 vmap <s-tab> <gv
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Sessions Setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap ,wq <ESC>:mksession! ~/.vim/Session.vim<CR>:wqa<CR>
+nmap ,ls <ESC>:source ~/.vim/Session.vim<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
