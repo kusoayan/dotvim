@@ -161,6 +161,7 @@ endif
 if has("gui_running")
     set guioptions-=T "remove toolbar
     set guioptions-=r "remove right-hand scroll bar
+    set guioptions-=L "remove left-hand scrollbar which is present when there is a vertically split window
     set guioptions-=m "remove menu
     set guioptions-=e "for tabline
     "不管 normal , visual , select mode 都要用 輸入文字 的游標
@@ -449,13 +450,6 @@ vmap <s-tab> <gv
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Sessions Setting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap ,wq <ESC>:mksession! ~/.vim/Session.vim<CR>:wqa<CR>
-nmap ,ls <ESC>:source ~/.vim/Session.vim<CR>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => bufExplorer plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:bufExplorerDefaultHelp=0
@@ -479,6 +473,7 @@ nnoremap <silent> <F9> :TagbarToggle<CR>
 " => YankRing plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <F11> :YRShow<CR>
+nnoremap <silent> <C-F11> :YRSearch 
 
 
 
