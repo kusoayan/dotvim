@@ -227,8 +227,13 @@ snippet fun
 	}
 # $... = array (...)
 snippet array
-	$${1:arrayName} = array('${2}' => ${3});${4}
-
+	$${1:arrayName} = array("${2}" => ${3});${4}
+# <pre> var_dump
+snippet pd
+	echo "<pre>" . var_dump(${1}) . "</pre>";
+# <pre> var_dump die
+snippet pdd
+	echo "<pre>" . var_dump(${1}) . "</pre>";die();
 # # # # # # # #
 # CofeIgniter #
 # # # # # # # #

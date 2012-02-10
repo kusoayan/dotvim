@@ -475,9 +475,12 @@ nnoremap <silent> <F9> :TagbarToggle<CR>
 nnoremap <silent> <F11> :YRShow<CR>
 nnoremap <silent> <C-F11> :YRSearch 
 
-
-
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => neocomplcache plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_disable_auto_complete = 1
+let g:SuperTabDefaultCompletionType = "<C-X><C-U>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Tabline Set
