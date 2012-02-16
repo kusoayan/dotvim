@@ -13,7 +13,7 @@ if exists('loaded_snips') || &cp || version < 700
 finish
 endif
 let loaded_snips = 1
-if !exists('snips_author') | let snips_author = 'Me' | endif
+if !exists('snips_author') | let snips_author = 'Wei' | endif
 
 au BufRead,BufNewFile *.snippets\= set ft=snippet
 au FileType snippet setl noet fdm=indent
