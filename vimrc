@@ -20,6 +20,7 @@ set nocompatible
 "    -> Parenthesis/bracket expanding
 "    -> General Abbrevs
 "    -> Editing mappings
+"    -> Compile mappings
 "
 "    -> Plugins settings
 "
@@ -58,6 +59,7 @@ Bundle 'snipMate'
 Bundle 'color'
 Bundle 'syntax'
 Bundle 'tw-doc'
+Bundle 'vim-latex-1.8.23'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -182,6 +184,7 @@ catch
 endtry
 
 set ffs=unix,dos,mac "Default file types
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -448,6 +451,10 @@ nmap <s-tab> v<
 vmap <tab> >gv
 vmap <s-tab> <gv
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Compile mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <F4> :!ruby %
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => bufExplorer plugin
@@ -481,6 +488,20 @@ nnoremap <silent> <C-F11> :YRSearch
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_disable_auto_complete = 1
 let g:SuperTabDefaultCompletionType = "<C-X><C-U>"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => latex plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Tabline Set
