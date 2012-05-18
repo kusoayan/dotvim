@@ -52,12 +52,15 @@ Bundle 'Lokaltog/vim-powerline'
 " vim-scripts repos
 Bundle 'bufexplorer.zip'
 Bundle 'EasyMotion'
+Bundle 'sudo.vim.git'
+Bundle 'php.vim-for-php5'
+Bundle 'EasyGrep.git'
 " my plugin
 Bundle 'Align'
 Bundle 'yankring'
 Bundle 'snipMate'
 Bundle 'color'
-Bundle 'syntax'
+"Bundle 'syntax'
 Bundle 'tw-doc'
 Bundle 'vim-latex-1.8.23'
 
@@ -310,7 +313,6 @@ endfunc
 func! CurrentFileDir(cmd)
     return a:cmd . " " . expand("%:p:h") . "/"
 endfunc
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs and buffers
