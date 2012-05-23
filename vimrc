@@ -49,6 +49,7 @@ Bundle 'tpope/vim-surround.git'
 Bundle 'majutsushi/tagbar.git'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'tpope/vim-fugitive.git'
 " vim-scripts repos
 Bundle 'bufexplorer.zip'
 Bundle 'EasyMotion'
