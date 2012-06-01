@@ -318,6 +318,10 @@ endfunc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Treat long lines as break lines (useful when moving around in them):
+map j gj
+map k gk
+
 " Map space to / (search) and c-space to ? (backgwards search)
 map <space> /
 map <c-space> ?
