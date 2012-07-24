@@ -21,6 +21,7 @@ set nocompatible
 "    -> General Abbrevs
 "    -> Editing mappings
 "    -> Compile mappings
+"    -> Prepare for empty file
 "
 "    -> Plugins settings
 "
@@ -68,6 +69,10 @@ Bundle 'vim-latex-1.8.23'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set IM disable and enable for Chinese Input
+autocmd InsertEnter * set noimdisable
+autocmd InsertLeave * set imdisable
+
 " Sets how many lines of history VIM has to remember
 set history=700
 
@@ -227,6 +232,9 @@ set si "Smart indet
 set wrap "Wrap lines
 
 set guitablabel=%t "set tab name
+
+" set indent for ruby
+autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -462,6 +470,17 @@ vmap <s-tab> <gv
 " => Compile mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F4> :!ruby %
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Prepare for empty file
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function PHPHeader()
+    if getfsize(@%) <= 0
+        execute "norm i<?php"
+    endif
+endfunction
+
+au BufRead,BufNewFile *.php call PHPHeader()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => bufExplorer plugin
